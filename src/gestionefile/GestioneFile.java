@@ -14,9 +14,7 @@ public class GestioneFile {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        
+    public static void main(String[] args) { 
         //1)LETTURA
         Lettore lettore = new Lettore("user.json");
         lettore.start();
