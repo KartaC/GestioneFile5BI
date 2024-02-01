@@ -32,12 +32,11 @@ public class Scrittore implements Runnable{
      * Scrive un file di testo usando la classe BufferedWriter
      */
     public void scrivi(){
-        BufferedWriter br=null;
+
         
-        try {
+        try(BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile))) {
             //1) apro il file
-            br = new BufferedWriter(
-                    new FileWriter(nomeFile));
+
             //2) scrivo nel buffer
             br.write(" < "+username+" > ");
             br.write("\n\r");
@@ -48,15 +47,7 @@ public class Scrittore implements Runnable{
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally{
-            if (br!=null)
-                try {
-                    //4)chiudo lo stream in uscita
-                    br.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
                 
         }
     }
-}
